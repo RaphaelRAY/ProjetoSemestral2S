@@ -44,7 +44,7 @@ public class TelaSingUP extends javax.swing.JFrame{
         att_componte();
         //configuração da tela
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        this.setSize(300, 205);
+        this.setSize(300, 250);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setLayout(new BorderLayout());
@@ -73,7 +73,7 @@ public class TelaSingUP extends javax.swing.JFrame{
         JPanel panelEmail = new JPanel();
         panelEmail.setLayout(flowLayout);
         panelEmail.add(label4);
-        text1.setColumns(10);
+        text1.setColumns(15);
         panelEmail.add(text1);
 
 
@@ -111,13 +111,17 @@ public class TelaSingUP extends javax.swing.JFrame{
                 //verificar se as senhas são iguais
                 //se sim, criar o usuario
                 //se não, mostrar mensagem de erro.
-                usuario = new Usuario(text.getText(), passwordField.getPassword());
-                if (!usuario.verificar_usuario()) {
-                    if (usuario.verificar_senhas(passwordField2.getPassword())) {
+                usuario = new Usuario(text.getText(), passwordField.getPassword(), text1.getText());
+                if (usuario.verificar_usuario_novo()) {
+                    if (usuario.verficar_email_novo()) {
+                        if (usuario.verificar_senhas(passwordField2.getPassword())) {
 
+                        }else{
+                            //mostrar mensagem de erro com JOptionPane
+                            JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroPassSing"), "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
                     }else{
-                        //mostrar mensagem de erro com JOptionPane
-                        JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroPassSing"), "Erro", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroEmail"), "Erro", JOptionPane.ERROR_MESSAGE);
                     }
                 } else{
                     //mostrar mensagem de erro com JOptionPane

@@ -69,13 +69,13 @@ public class TelaLogIn extends javax.swing.JFrame{
         JPanel panelLogIn = new JPanel();
         panelLogIn.setLayout(new GridLayout(2,1));
         
-        //painel de usuario
+        //painel de email
         JPanel panelUser = new JPanel();
         FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER);
         flowLayout.setAlignOnBaseline(true);
         panelUser.setLayout(flowLayout);
         panelUser.add(label);
-        text.setColumns(10);
+        text.setColumns(15);
         panelUser.add(text);
 
         //painel de senha
@@ -115,7 +115,7 @@ public class TelaLogIn extends javax.swing.JFrame{
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuario = new Usuario(text.getText(), text2.getPassword());
-                if (usuario.verificar_usuario() && usuario.verificar_senha()) {
+                if (usuario.verficar_email() && usuario.verificar_senha()) {
                     
                 } else{
                     //mostrar mensagem de erro com JOptionPane
@@ -168,7 +168,7 @@ public class TelaLogIn extends javax.swing.JFrame{
     private void att_componte(){
         botaoLogIn.setText(bundle.getString("telaEntra.login"));
         botaoSingUp.setText(bundle.getString("telaEntra.signin"));
-        label.setText(bundle.getString("telaEntra.username"));
+        label.setText(bundle.getString("telaEntra.email"));
         label2.setText(bundle.getString("telaEntra.password"));
         languageMenu.setText(bundle.getString("telaEntra.language"));
         englishMenuItem.setText(bundle.getString("telaEntra.english"));
