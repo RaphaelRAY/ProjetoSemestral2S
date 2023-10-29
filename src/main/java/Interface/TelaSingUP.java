@@ -19,7 +19,9 @@ public class TelaSingUP extends javax.swing.JFrame{
     private JLabel  label = new JLabel() ;
     private JLabel  label2 = new JLabel();
     private JLabel  label3 = new JLabel();
+    private JLabel  label4 = new JLabel();
     private JTextField text = new JTextField();
+    private JTextField text1 = new JTextField();
     private JPasswordField passwordField = new JPasswordField();
     private JPasswordField passwordField2 = new JPasswordField();;
     //ver caminho dinamico da imagem
@@ -55,7 +57,7 @@ public class TelaSingUP extends javax.swing.JFrame{
 
         //painel singUP
         JPanel panelSingUp = new JPanel();
-        panelSingUp.setLayout(new GridLayout(3, 1));
+        panelSingUp.setLayout(new GridLayout(4, 1));
 
 
         //painel de user
@@ -66,6 +68,14 @@ public class TelaSingUP extends javax.swing.JFrame{
         panelUser.add(label);
         text.setColumns(10);
         panelUser.add(text);
+
+        //painel de email
+        JPanel panelEmail = new JPanel();
+        panelEmail.setLayout(flowLayout);
+        panelEmail.add(label4);
+        text1.setColumns(10);
+        panelEmail.add(text1);
+
 
         //painel de senha
         JPanel panelPassword = new JPanel();
@@ -82,8 +92,10 @@ public class TelaSingUP extends javax.swing.JFrame{
         panelPassword2.add(passwordField2);
 
         panelSingUp.add(panelUser);
+        panelSingUp.add(panelEmail);
         panelSingUp.add(panelPassword);
         panelSingUp.add(panelPassword2);
+        
 
         //adicionando eventos
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +152,7 @@ public class TelaSingUP extends javax.swing.JFrame{
         label.setText(bundle.getString("telaEntra.username"));
         label2.setText(bundle.getString("telaEntra.password"));
         label3.setText(bundle.getString("telaEntra.cornfirm"));
+        label4.setText(bundle.getString("telaEntra.email"));
     }
 
 }
