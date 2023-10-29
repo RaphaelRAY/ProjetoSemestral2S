@@ -5,6 +5,8 @@ import java.util.Arrays;
 public class Usuario {
     private String username;
     private char[]  password;
+    private String email;
+
 
     public Usuario(String username, char[] cs){
         this.username = username;
@@ -29,6 +31,14 @@ public class Usuario {
 
     public void setPassword(char[]  password){
         this.password = password;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public String getEmail(){
+        return this.email;
     }
 
     public boolean verificar_senhas(char [] password1){
