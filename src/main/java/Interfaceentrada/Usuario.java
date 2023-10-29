@@ -1,4 +1,4 @@
-package Interface;
+package Interfaceentrada;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

@@ -1,4 +1,4 @@
-package Interface;
+package Interfaceentrada;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

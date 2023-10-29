@@ -1,4 +1,4 @@
-package Interface;
+package Interfaceentrada;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
