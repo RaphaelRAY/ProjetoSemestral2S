@@ -62,7 +62,7 @@ public class TelaSingUP extends javax.swing.JFrame{
 
         //painel de user
         JPanel panelUser = new JPanel();
-        FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER);
+        FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER, 5, 5);
         flowLayout.setAlignOnBaseline(true);
         panelUser.setLayout(flowLayout);
         panelUser.add(label);
@@ -100,7 +100,7 @@ public class TelaSingUP extends javax.swing.JFrame{
         //adicionando eventos
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelaLogIn tela = new TelaLogIn();
+                TelaLogIn tela = new TelaLogIn(bundle);
                 tela.setVisible(true);
                 dispose();
             }
@@ -115,7 +115,14 @@ public class TelaSingUP extends javax.swing.JFrame{
                 if (usuario.verificar_usuario_novo()) {
                     if (usuario.verficar_email_novo()) {
                         if (usuario.verificar_senhas(passwordField2.getPassword())) {
-
+                            //criar o usuario
+                            //usuario.salvar_usuario();;
+                            //mostrar mensagem de sucesso com JOptionPane
+                            JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.SucessSing"), "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                            //voltar para tela de login
+                            TelaLogIn tela = new TelaLogIn(bundle);
+                            tela.setVisible(true);
+                            dispose();
                         }else{
                             //mostrar mensagem de erro com JOptionPane
                             JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroPassSing"), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -154,7 +161,7 @@ public class TelaSingUP extends javax.swing.JFrame{
         botaoVoltar.setText(bundle.getString("telaEntra.return"));
         botaoSingUp.setText(bundle.getString("telaEntra.signin"));
         label.setText(bundle.getString("telaEntra.username"));
-        label2.setText(bundle.getString("telaEntra.password"));
+        label2.setText(bundle.getString("telaEntra.password2"));
         label3.setText(bundle.getString("telaEntra.cornfirm"));
         label4.setText(bundle.getString("telaEntra.email"));
     }

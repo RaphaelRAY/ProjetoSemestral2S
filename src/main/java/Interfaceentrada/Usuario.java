@@ -1,13 +1,22 @@
 package Interfaceentrada;
 
+import java.sql.Connection;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import DAO.CommandsDB;
+import DTO.ConnFactory;
+import DTO.GeneralData;
+
 
 public class Usuario {
     private String username;
     private char[]  password;
     private String email;
+    private CommandsDB Db = new CommandsDB();
+
+    Connection conn = ConnFactory.getConn();
 
     public Usuario(String username, char[] cs, String email){
         this.username = username;
@@ -49,7 +58,7 @@ public class Usuario {
     }
 
     public boolean verificar_senhas(char [] password1){
-        return Arrays.equals(password, password1);
+        return Arrays.equals(password, password1) && password.length > 0;
     }
 
     public boolean verificar_usuario(){
@@ -59,7 +68,13 @@ public class Usuario {
 
     public boolean verificar_usuario_novo(){
         //verificar se o usuario é valido
-            return !verificar_usuario();
+        if (username.length() > 0) {
+            //se não existe no banco de dados
+            return !true;
+        }else {
+            return false;
+        }
+            
     }
 
     public boolean verificar_senha(){
@@ -69,11 +84,16 @@ public class Usuario {
     
     public void salvar_usuario(){
         //salvar o usuario no banco de dados
+        Db.setUsername(username);
+        Db.setEmail(email);
+        Db.setPassword(password.toString());  
+        Db.insertUser(conn); 
     }
 
     public boolean verficar_email(){
         //verificar se o email existe no banco de dados
-        return false;
+        String mail = CommandsDB.emailVerify(conn, email);
+        return (mail != null);
     }
 
     public boolean verficar_email_novo(){
@@ -86,8 +106,6 @@ public class Usuario {
         }
 
     }
-
-
 
     public boolean isValidEmail() {
         if (!(email == null)) {

@@ -38,13 +38,20 @@ public class TelaLogIn extends javax.swing.JFrame{
 
     // bundle deflaut = en_US
     // ResourceBundle bundle = ResourceBundle.getBundle("messages", new Locale("pt", "BR"));
-    ResourceBundle bundle = ResourceBundle.getBundle("messages", Locale.US);
+    ResourceBundle bundle ;
 
     Usuario usuario;
 
 
     public TelaLogIn() {
         super("Log In");
+        bundle = ResourceBundle.getBundle("messages", Locale.US);
+        initComponents();
+    }
+    
+    public TelaLogIn(ResourceBundle bundle) {
+        super("Log In");
+        this.bundle = bundle;
         
         initComponents();
     }
