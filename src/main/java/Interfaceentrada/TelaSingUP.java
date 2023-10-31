@@ -153,7 +153,7 @@ public class TelaSingUP extends javax.swing.JFrame{
 
     private void configScaleImage(){
         java.awt.Image img = imageIcon.getImage();
-        java.awt.Image newimg = img.getScaledInstance(100, 54,  java.awt.Image.SCALE_SMOOTH);
+        java.awt.Image newimg = img.getScaledInstance(200, 75,  java.awt.Image.SCALE_SMOOTH);
         this.imageIcon =  new ImageIcon(newimg);
     }
     

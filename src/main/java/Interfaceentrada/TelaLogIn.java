@@ -61,7 +61,7 @@ public class TelaLogIn extends javax.swing.JFrame{
         
         //configuração da tela
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        this.setSize(300, 200);
+        this.setSize(300, 250);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setLayout(new BorderLayout());
@@ -159,7 +159,7 @@ public class TelaLogIn extends javax.swing.JFrame{
 
     private void configScaleImage(){
         java.awt.Image img = imageIcon.getImage();
-        java.awt.Image newimg = img.getScaledInstance(100, 54,  java.awt.Image.SCALE_SMOOTH);
+        java.awt.Image newimg = img.getScaledInstance(200, 75,  java.awt.Image.SCALE_SMOOTH);
         this.imageIcon =  new ImageIcon(newimg);
     }
 
