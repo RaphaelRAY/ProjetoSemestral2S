@@ -122,8 +122,9 @@ public class TelaLogIn extends javax.swing.JFrame{
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuario = new Usuario(text.getText(), text2.getPassword());
-                if (usuario.verficar_email() && usuario.verificar_senha()) {
-                    
+                if (usuario.verificar_senha()) {
+                    //abrir tela de usuario
+                    JOptionPane.showMessageDialog(null, "Aprovado", "Sucess", JOptionPane.INFORMATION_MESSAGE);
                 } else{
                     //mostrar mensagem de erro com JOptionPane
                     JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.Errologin"), "Erro", JOptionPane.ERROR_MESSAGE);

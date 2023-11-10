@@ -1,18 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DTO;
 
-/**
- *
- * @author Chambs
- */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/// NA HORA DE CRIAR UMA TABLE PROS ARQUIVOS NO SQL ELA DEVE SER DO TIPO <BLOB> OU <LONGBLOB>
+/// NA HORA DE CRIAR UMA TABLE PROS ARQUIVOS DE AUDIO E IMAGEM NO SQL ELA DEVE SER DO TIPO <BLOB> OU <LONGBLOB>
+/// E A TABLE DOS ARQUIVOS DE TEXTO DEVE SER DO TIPO <LONGTEXT>
 
 public class ConnFactory {
     private static final String URL = "jdbc:mysql://localhost:3306/proj_db";

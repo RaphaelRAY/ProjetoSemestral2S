@@ -15,10 +15,10 @@ public class Usuario {
     private char[]  password;
     private String email;
     private CommandsDB Db = new CommandsDB();
-
     Connection conn = ConnFactory.getConn();
 
     public Usuario(String username, char[] cs, String email){
+
         this.username = username;
         this.password = cs;
         this.email = email;
@@ -66,27 +66,20 @@ public class Usuario {
         return true;
     }
 
-    public boolean verificar_usuario_novo(){
-        //verificar se o usuario é valido
-        if (username.length() > 0) {
-            //se não existe no banco de dados
-            return !true;
-        }else {
-            return false;
-        }
-            
-    }
 
     public boolean verificar_senha(){
         //verificar se a senha bate com banco de dados
-        return true;
+        System.out.println("Senhas");
+        System.out.println(CommandsDB.passVerify(conn, email) + "=" + String.valueOf(password) );
+        System.out.println(CommandsDB.passVerify(conn, email).equals(String.valueOf(password)));
+        return CommandsDB.passVerify(conn, email).equals(String.valueOf(password));
     }
     
     public void salvar_usuario(){
         //salvar o usuario no banco de dados
         Db.setUsername(username);
         Db.setEmail(email);
-        Db.setPassword(password.toString());  
+        Db.setPassword(String.valueOf(password));  
         Db.insertUser(conn); 
     }
 

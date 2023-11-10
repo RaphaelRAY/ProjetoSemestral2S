@@ -112,27 +112,24 @@ public class TelaSingUP extends javax.swing.JFrame{
                 //se sim, criar o usuario
                 //se não, mostrar mensagem de erro.
                 usuario = new Usuario(text.getText(), passwordField.getPassword(), text1.getText());
-                if (usuario.verificar_usuario_novo()) {
-                    if (usuario.verficar_email_novo()) {
-                        if (usuario.verificar_senhas(passwordField2.getPassword())) {
-                            //criar o usuario
-                            //usuario.salvar_usuario();;
-                            //mostrar mensagem de sucesso com JOptionPane
-                            JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.SucessSing"), "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-                            //voltar para tela de login
-                            TelaLogIn tela = new TelaLogIn(bundle);
-                            tela.setVisible(true);
-                            dispose();
-                        }else{
-                            //mostrar mensagem de erro com JOptionPane
-                            JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroPassSing"), "Erro", JOptionPane.ERROR_MESSAGE);
-                        }
+                
+                if (usuario.verficar_email_novo()) {
+                    if (usuario.verificar_senhas(passwordField2.getPassword())) {
+                        //criar o usuario
+                        //usuario.salvar_usuario();;
+                        //mostrar mensagem de sucesso com JOptionPane
+                        JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.SucessSing"), "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                        usuario.salvar_usuario();
+                        //voltar para tela de login
+                        TelaLogIn tela = new TelaLogIn(bundle);
+                        tela.setVisible(true);
+                        dispose();
                     }else{
-                        JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroEmail"), "Erro", JOptionPane.ERROR_MESSAGE);
+                        //mostrar mensagem de erro com JOptionPane
+                        JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroPassSing"), "Erro", JOptionPane.ERROR_MESSAGE);
                     }
-                } else{
-                    //mostrar mensagem de erro com JOptionPane
-                    JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroUserArledy"), "Erro", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.ErroEmail"), "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
