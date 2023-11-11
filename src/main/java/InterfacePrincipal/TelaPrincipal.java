@@ -6,11 +6,8 @@ import javax.swing.JPanel;
 import Interfaceentrada.TelaLogIn;
 
 import java.awt.BorderLayout;
-import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 class TelaPrincipal extends javax.swing.JFrame{
     

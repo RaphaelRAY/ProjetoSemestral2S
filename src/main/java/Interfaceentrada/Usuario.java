@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 import DAO.CommandsDB;
 import DTO.ConnFactory;
-import DTO.GeneralData;
 
 
 public class Usuario {

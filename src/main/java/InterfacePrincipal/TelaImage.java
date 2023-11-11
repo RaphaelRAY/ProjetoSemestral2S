@@ -6,15 +6,13 @@ import javax.swing.JPanel;
 
 import DAO.CommandsDB;
 import DTO.ConnFactory;
-import Interfaceentrada.TelaLogIn;
+
 
 import java.awt.BorderLayout;
-import java.awt.ComponentOrientation;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.sql.Connection;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 class TelaImage extends javax.swing.JFrame{
     
@@ -55,7 +53,7 @@ class TelaImage extends javax.swing.JFrame{
         panelbotao.add(ViewButton);
         panelbotao.add(DeleteButton);
 
-        conn = bd.getConn();
+        conn = ConnFactory.getConn();
 
         UploadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

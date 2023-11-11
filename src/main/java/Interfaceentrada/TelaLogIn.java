@@ -9,12 +9,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import ClienteServidor.Cliente;
+
 import javax.swing.ImageIcon;
 
 import java.awt.BorderLayout;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -125,8 +129,13 @@ public class TelaLogIn extends javax.swing.JFrame{
                 if (usuario.verificar_senha()) {
                     //abrir tela de usuario
                     JOptionPane.showMessageDialog(null, "Aprovado", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+                     try {
+                        Cliente cl = new Cliente();
+                        cl.mandar_recorrencia(usuario.getEmail());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else{
-                    //mostrar mensagem de erro com JOptionPane
                     JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.Errologin"), "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }

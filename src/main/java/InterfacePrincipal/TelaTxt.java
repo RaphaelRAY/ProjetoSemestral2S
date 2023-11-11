@@ -1,16 +1,15 @@
 package InterfacePrincipal;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Interfaceentrada.TelaLogIn;
-
+import DAO.CommandsDB;
+import DTO.ConnFactory;
 import java.awt.BorderLayout;
-import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.sql.Connection;
 
 class TelaTxt extends javax.swing.JFrame{
     
@@ -52,13 +51,13 @@ class TelaTxt extends javax.swing.JFrame{
 
         UploadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+                UPLOADTXT();
             }
         });
 
         DowloadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+                LOADTXT();
             }
         });
 
@@ -70,7 +69,7 @@ class TelaTxt extends javax.swing.JFrame{
 
         DeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+                DELETETXT();
             }
         });
 
@@ -92,8 +91,8 @@ class TelaTxt extends javax.swing.JFrame{
     }
 
     CommandsDB cBD = new CommandsDB();
-    Connection conn = bd.getConn();
     ConnFactory bd = new ConnFactory();
+    Connection conn = ConnFactory.getConn();
     String tName;
     
     public void UPLOADTXT(){

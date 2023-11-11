@@ -6,18 +6,15 @@ import javax.swing.JPanel;
 
 import DAO.CommandsDB;
 import DTO.ConnFactory;
-import Interfaceentrada.TelaLogIn;
+
 
 import java.awt.BorderLayout;
-import java.awt.ComponentOrientation;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 class TelaAudio extends javax.swing.JFrame{
     
@@ -103,29 +100,28 @@ class TelaAudio extends javax.swing.JFrame{
     }
 
     CommandsDB cBD = new CommandsDB();
-    Connection conn = null;
+    Connection conn = ConnFactory.getConn();
     ConnFactory bd = new ConnFactory();
     String aName;
     
     public void UPLOAD() throws IOException{
-        conn = bd.getConn();
+
         System.out.println(">> Upload audio)");
         aName = JOptionPane.showInputDialog(null, "Salvar arquivo como: ");
         cBD.setAudioname(aName);
-        cBD.uploadAudio(conn, aName);
+        CommandsDB.uploadAudio(conn, aName);
         JOptionPane.showMessageDialog(null, "Arquivo de audio inserido com sucesso");
     }
     
     public void PLAYER(){
-        conn = bd.getConn();
+
         System.out.println(">> Play audio");
         aName = JOptionPane.showInputDialog(null, "Nome: ");
         cBD.setAudioname(aName);
-        cBD.playAudio(conn, aName);
+        CommandsDB.playAudio(conn, aName);
     }
     
     public void DELETE(){
-        conn = bd.getConn();
         System.out.println(">> Delete audio");
         aName = JOptionPane.showInputDialog(null, "Nome do arquivo a ser deletado: ");
         cBD.setAudioname(aName);

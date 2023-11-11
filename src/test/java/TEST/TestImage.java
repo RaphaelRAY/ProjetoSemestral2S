@@ -46,7 +46,6 @@ public class TestImage {
                 cBD.setImagename(iName);
                 cBD.deleteImg(conn);
                 JOptionPane.showMessageDialog(null, "Imagem excluida com sucesso!");
-                
             }else{
                 JOptionPane.showMessageDialog(null, "Saindo...");
                 System.out.println(">> Programa encerrado");
