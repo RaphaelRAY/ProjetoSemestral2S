@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.BorderLayout;
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.util.Locale;
+import java.util.ResourceBundle;
 /**
  *
  * @author Chambs

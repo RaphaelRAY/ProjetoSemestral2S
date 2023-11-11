@@ -35,7 +35,7 @@ public class TelaSingUP extends javax.swing.JFrame{
     public TelaSingUP(String username,ResourceBundle bundle) {
         super(bundle.getString("telaEntra.signin"));
         this.bundle = bundle;
-        text.setText(username);
+        text1.setText(username);
         
         initComponents();
     }
