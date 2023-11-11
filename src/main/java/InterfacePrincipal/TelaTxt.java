@@ -90,5 +90,29 @@ class TelaTxt extends javax.swing.JFrame{
         this.add(panelLogOut, BorderLayout.SOUTH);
         
     }
+
+    CommandsDB cBD = new CommandsDB();
+    Connection conn = bd.getConn();
+    ConnFactory bd = new ConnFactory();
+    String tName;
+    
+    public void UPLOADTXT(){
+        tName = JOptionPane.showInputDialog(null, "Salvar como: ");
+        cBD.setTextname(tName);
+        cBD.uploadTxt(conn);
+    }
+    
+    public void DELETETXT(){
+        tName = JOptionPane.showInputDialog(null, "Nome: ");
+        cBD.setTextname(tName);
+        cBD.deleteTxt(conn);
+        JOptionPane.showMessageDialog(null, "Deletado com sucesso!");
+    }
+    
+    public void LOADTXT(){
+        tName = JOptionPane.showInputDialog(null, "Nome: ");
+        cBD.setTextname(tName);
+        cBD.loadTxt(conn);
+    }
     
 }
