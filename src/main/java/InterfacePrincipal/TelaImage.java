@@ -46,7 +46,7 @@ class TelaImage extends javax.swing.JFrame{
 
 
         //painel de botões
-        JPanel panelbotao = new JPanel(new GridLayout(3,1));
+        JPanel panelbotao = new JPanel(new GridLayout(3,1,5,10));
         panelbotao.add(UploadButton);
         panelbotao.add(DowloadButton);
         panelbotao.add(ViewButton);

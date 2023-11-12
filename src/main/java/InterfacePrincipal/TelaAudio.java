@@ -44,7 +44,7 @@ class TelaAudio extends javax.swing.JFrame {
         DeleteButton = new JButton((bundle.getString("telaPrincipal.delete")));
 
         // painel de botões
-        JPanel panelbotao = new JPanel(new GridLayout(3, 1));
+        JPanel panelbotao = new JPanel(new GridLayout(3, 1, 5, 10));
         panelbotao.add(UploadButton);
         panelbotao.add(DowloadButton);
         panelbotao.add(ViewButton);
