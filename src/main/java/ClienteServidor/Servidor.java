@@ -3,6 +3,10 @@ package ClienteServidor;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.List;
+
+import DAO.CommandsDB;
+import DTO.ConnFactory;
+
 import java.util.LinkedList;
 
 public class Servidor {
@@ -29,6 +33,7 @@ public class Servidor {
     public void clientMessageLoop(SocketCliente clientSocket){
         String msg;
         msg = clientSocket.getMessage();
+        CommandsDB.inserir_recorrencia(ConnFactory.getConn(),msg);
         System.out.println(msg);
     }
 

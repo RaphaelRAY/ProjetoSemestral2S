@@ -18,7 +18,8 @@ public class Cliente{
     }
 
     public void mandar_recorrencia(String email) throws IOException{
-        String recorrenciaString = email + "|" + java.time.LocalTime.now();
+        // Hora e data da recorrencia
+        String recorrenciaString = email + "|" + java.time.LocalDate.now() + "|" + java.time.LocalTime.now() ;
         clientSocket.sendMsg(recorrenciaString);
     }
 

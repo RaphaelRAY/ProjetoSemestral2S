@@ -19,8 +19,10 @@ import java.io.InputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import Criptografia.Criptografia;
+
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -39,7 +41,7 @@ public class CommandsDB extends GeneralData {
             stmt = ConnFactory.getConn().prepareStatement(sqlInsert);
             stmt.setString(1, getUsername());
             stmt.setString(2, getEmail());
-            stmt.setString(3, getPassword());
+            stmt.setString(3, Criptografia.Criptografar(getPassword()) );
             
             stmt.execute();
             stmt.close();
@@ -79,7 +81,6 @@ public class CommandsDB extends GeneralData {
     /// validar email
     public static String emailVerify(Connection conn, String uEmail) {
         PreparedStatement stmt = null;
-        ResultSet rs = null;
         String check = null;
         try {
             String sqlSelect = "SELECT email FROM USER_LOG WHERE email = ?";
@@ -101,7 +102,6 @@ public class CommandsDB extends GeneralData {
     /// validar senha
     public static String passVerify(Connection conn, String uEmail){
         PreparedStatement stmt = null;
-        ResultSet rs = null;
         String check = null;
         try {
             String sqlSelect = "SELECT password FROM USER_LOG WHERE email = ?";
@@ -110,7 +110,7 @@ public class CommandsDB extends GeneralData {
 
             try (ResultSet res = stmt.executeQuery()) {
                 if (res.next()) {
-                    check = res.getString("password");
+                    check = Criptografia.Descriptografar(res.getString("password"));
                 }
             }
         } catch (SQLException e) {
@@ -155,7 +155,6 @@ public class CommandsDB extends GeneralData {
                 byte[] audioBytes = rs.getBytes("audiofile");
                 InputStream stream = new ByteArrayInputStream(audioBytes);
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(stream);
-                AudioFormat format = audioInputStream.getFormat();
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
                 clip.addLineListener(new LineListener() {
@@ -205,7 +204,8 @@ public class CommandsDB extends GeneralData {
         ResultSet rs;
         ArrayList<GeneralData> lista = new ArrayList<>();
         String sqlSelect = "SELECT * FROM audio_files";
-        conn = new ConnFactory().getConn();
+        new ConnFactory();
+        conn = ConnFactory.getConn();
         try {
          ps = conn.prepareStatement(sqlSelect);
          rs = ps.executeQuery();
@@ -240,6 +240,7 @@ public class CommandsDB extends GeneralData {
                 preparedStatement.setString(2, conteudo.toString());
                 preparedStatement.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Arquivo de texto inserido com sucesso!");
+                reader.close();
             } catch (Exception e) {
                 System.out.println("Erro ao adicionar dados " + e.toString());
                 e.printStackTrace();
@@ -301,7 +302,8 @@ public class CommandsDB extends GeneralData {
         ResultSet rs;
         ArrayList<GeneralData> lista = new ArrayList<>();
         String sqlSelect = "SELECT * FROM text_files";
-        conn = new ConnFactory().getConn();
+        new ConnFactory();
+        conn = ConnFactory.getConn();
         try {
          ps = conn.prepareStatement(sqlSelect);
          rs = ps.executeQuery();
@@ -402,7 +404,8 @@ public class CommandsDB extends GeneralData {
         ArrayList<GeneralData> lista = new ArrayList<>();
         String sql = "SELECT * FROM image_files";
         
-        conn = new ConnFactory().getConn();
+        new ConnFactory();
+        conn = ConnFactory.getConn();
         
         try {
          ps = conn.prepareStatement(sql);
@@ -420,6 +423,25 @@ public class CommandsDB extends GeneralData {
             e.printStackTrace();
         }return lista;
     } 
+    public static void inserir_recorrencia(Connection conn, String info) {
+        try {
+            String[] infoArray = info.split("\\|");
+            String email = infoArray[0];
+            String date = infoArray[1];
+            String time = infoArray[2];
+            
+            String insertSQL = "INSERT INTO recorrecias (email, data, hora) VALUES (?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(insertSQL);
+            stmt.setString(1, email);
+            stmt.setString(2, date);
+            stmt.setString(3, time);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     
     
 }

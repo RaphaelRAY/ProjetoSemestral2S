@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 
 import ClienteServidor.Cliente;
 
+import InterfacePrincipal.TelaPrincipal;
+
 import javax.swing.ImageIcon;
 
 import java.awt.BorderLayout;
@@ -135,6 +137,8 @@ public class TelaLogIn extends javax.swing.JFrame{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    new TelaPrincipal(bundle).setVisible(true);
+                    dispose();
                 } else{
                     JOptionPane.showMessageDialog(null, bundle.getString("telaEntra.Errologin"), "Erro", JOptionPane.ERROR_MESSAGE);
                 }
@@ -190,11 +194,5 @@ public class TelaLogIn extends javax.swing.JFrame{
         languageMenu.setText(bundle.getString("telaEntra.language"));
         englishMenuItem.setText(bundle.getString("telaEntra.english"));
         portugueseMenuItem.setText(bundle.getString("telaEntra.portuguese"));
-    }
-
-
-    public static void main(String[] args) {
-        TelaLogIn tela = new TelaLogIn();
-        tela.setVisible(true);
     }
 }

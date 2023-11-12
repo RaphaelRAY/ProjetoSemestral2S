@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.sql.Connection;
+import java.util.ResourceBundle;
 
 class TelaTxt extends javax.swing.JFrame{
     
@@ -18,14 +19,13 @@ class TelaTxt extends javax.swing.JFrame{
     private JButton ViewButton ;
     private JButton BackButton ;
     private JButton DeleteButton ;
+
+    ResourceBundle bundle;
     
 
-    public static void main(String[] args){
-        new TelaTxt().setVisible(true);
-    }
-
-    TelaTxt(){
+    TelaTxt(ResourceBundle bundle){
         super("Tela de Texto");
+        this.bundle = bundle;
         initComponents();
     }
 
@@ -80,7 +80,7 @@ class TelaTxt extends javax.swing.JFrame{
 
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new TelaPrincipal().setVisible(true);
+                new TelaPrincipal(bundle).setVisible(true);
                 dispose();
             }
         });

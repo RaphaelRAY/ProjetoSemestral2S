@@ -13,6 +13,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.sql.Connection;
+import java.util.ResourceBundle;
 
 class TelaImage extends javax.swing.JFrame{
     
@@ -21,15 +22,13 @@ class TelaImage extends javax.swing.JFrame{
     private JButton ViewButton ;
     private JButton BackButton ;
     private JButton DeleteButton ;
+
+    ResourceBundle bundle;
     
 
-    public static void main(String[] args){
-        TelaTxt tela = new TelaTxt();
-        tela.setVisible(true);
-    }
-
-    TelaImage(){
+    TelaImage(ResourceBundle bundle){
         super("Tela Imagem");
+        this.bundle = bundle;
         initComponents();
     }
 
@@ -96,7 +95,7 @@ class TelaImage extends javax.swing.JFrame{
 
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new TelaPrincipal().setVisible(true);
+                new TelaPrincipal(bundle).setVisible(true);
                 dispose();
             }
         });

@@ -14,6 +14,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ResourceBundle;
 
 
 class TelaAudio extends javax.swing.JFrame{
@@ -23,14 +24,12 @@ class TelaAudio extends javax.swing.JFrame{
     private JButton ViewButton ;
     private JButton BackButton ;
     private JButton DeleteButton ;
-    
 
-    public static void main(String[] args){
-        new TelaAudio().setVisible(true);
-    }
+    ResourceBundle bundle;
 
-    TelaAudio(){
+    TelaAudio(ResourceBundle bundle){
         super("Tela Audio");
+        this.bundle = bundle;
         initComponents();
     }
 
@@ -89,7 +88,7 @@ class TelaAudio extends javax.swing.JFrame{
 
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new TelaPrincipal().setVisible(true);
+                new TelaPrincipal(bundle).setVisible(true);
                 dispose();
             }
         });

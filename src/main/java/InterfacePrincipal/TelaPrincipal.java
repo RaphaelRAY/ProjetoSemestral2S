@@ -8,22 +8,20 @@ import Interfaceentrada.TelaLogIn;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.ResourceBundle;
 
-class TelaPrincipal extends javax.swing.JFrame{
+public class TelaPrincipal extends javax.swing.JFrame{
     
     private JButton TxtButton ;
     private JButton AudioButton;
     private JButton ImageButton ;
     private JButton LogOutButton ;
-    
+    ResourceBundle bundle;
 
-    public static void main(String[] args){
-        TelaTxt tela = new TelaTxt();
-        tela.setVisible(true);
-    }
 
-    TelaPrincipal(){
+    public TelaPrincipal(ResourceBundle bundle){
         super("Tela Principal");
+        this.bundle = bundle;
         initComponents();
     }
 
@@ -46,21 +44,21 @@ class TelaPrincipal extends javax.swing.JFrame{
 
         TxtButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new TelaTxt().setVisible(true);
+                new TelaTxt(bundle).setVisible(true);
                 dispose();
             }
         });
 
         AudioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new TelaAudio().setVisible(true);
+                new TelaAudio(bundle).setVisible(true);
                 dispose();
             }
         });
 
         ImageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new TelaImage().setVisible(true);
+                new TelaImage(bundle).setVisible(true);
                 dispose();
             }
         });
