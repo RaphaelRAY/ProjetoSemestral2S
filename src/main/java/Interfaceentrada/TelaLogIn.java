@@ -137,6 +137,7 @@ public class TelaLogIn extends javax.swing.JFrame{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    
                     new TelaPrincipal(bundle).setVisible(true);
                     dispose();
                 } else{

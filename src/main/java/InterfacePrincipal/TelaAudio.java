@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import DAO.CommandsDB;
 import DTO.ConnFactory;
 
-
 import java.awt.BorderLayout;
 
 import java.awt.FlowLayout;
@@ -16,38 +15,36 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.ResourceBundle;
 
+class TelaAudio extends javax.swing.JFrame {
 
-class TelaAudio extends javax.swing.JFrame{
-    
-    private JButton UploadButton ;
+    private JButton UploadButton;
     private JButton DowloadButton;
-    private JButton ViewButton ;
-    private JButton BackButton ;
-    private JButton DeleteButton ;
+    private JButton ViewButton;
+    private JButton BackButton;
+    private JButton DeleteButton;
 
     ResourceBundle bundle;
 
-    TelaAudio(ResourceBundle bundle){
-        super("Tela Audio");
+    TelaAudio(ResourceBundle bundle) {
+        super(bundle.getString("telaPrincipal.Audio"));
         this.bundle = bundle;
         initComponents();
     }
 
-    private void initComponents(){
+    private void initComponents() {
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setSize(300, 250);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setLayout(new BorderLayout());
-        
-        UploadButton = new JButton("Upload");
-        DowloadButton = new JButton("Dowload");
-        ViewButton = new JButton("View");
-        DeleteButton = new JButton("Delete");
 
+        UploadButton = new JButton((bundle.getString("telaPrincipal.upload")));
+        DowloadButton = new JButton((bundle.getString("telaPrincipal.download")));
+        ViewButton = new JButton((bundle.getString("telaPrincipal.view")));
+        DeleteButton = new JButton((bundle.getString("telaPrincipal.delete")));
 
-        //painel de botões
-        JPanel panelbotao = new JPanel(new GridLayout(3,1));
+        // painel de botões
+        JPanel panelbotao = new JPanel(new GridLayout(3, 1));
         panelbotao.add(UploadButton);
         panelbotao.add(DowloadButton);
         panelbotao.add(ViewButton);
@@ -55,11 +52,11 @@ class TelaAudio extends javax.swing.JFrame{
 
         UploadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            try {
-                UPLOAD();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao fazer upload do arquivo");
-            }
+                try {
+                    UPLOAD();
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, bundle.getString("telaPrincipal.erroUpload"));
+                }
             }
         });
 
@@ -71,7 +68,7 @@ class TelaAudio extends javax.swing.JFrame{
 
         ViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+
             }
         });
 
@@ -81,7 +78,7 @@ class TelaAudio extends javax.swing.JFrame{
             }
         });
 
-        BackButton = new JButton("Back");
+        BackButton = new JButton(bundle.getString("telaPrincipal.back"));
 
         JPanel panelLogOut = new JPanel(new FlowLayout());
         panelLogOut.add(BackButton);
@@ -95,38 +92,33 @@ class TelaAudio extends javax.swing.JFrame{
 
         this.add(panelbotao, BorderLayout.CENTER);
         this.add(panelLogOut, BorderLayout.SOUTH);
-        
+
     }
 
     CommandsDB cBD = new CommandsDB();
     Connection conn = ConnFactory.getConn();
     ConnFactory bd = new ConnFactory();
     String aName;
-    
-    public void UPLOAD() throws IOException{
 
-        System.out.println(">> Upload audio)");
-        aName = JOptionPane.showInputDialog(null, "Salvar arquivo como: ");
+    public void UPLOAD() throws IOException {
+        aName = JOptionPane.showInputDialog(null, bundle.getString(("telaPrincipal.name")));
         cBD.setAudioname(aName);
         CommandsDB.uploadAudio(conn, aName);
-        JOptionPane.showMessageDialog(null, "Arquivo de audio inserido com sucesso");
+        JOptionPane.showMessageDialog(null, bundle.getString("telaPrincipal.Sucesssave"));
     }
-    
-    public void PLAYER(){
 
-        System.out.println(">> Play audio");
-        aName = JOptionPane.showInputDialog(null, "Nome: ");
+    public void PLAYER() {
+        aName = JOptionPane.showInputDialog(null, bundle.getString(("telaPrincipal.name")));
         cBD.setAudioname(aName);
         CommandsDB.playAudio(conn, aName);
     }
-    
-    public void DELETE(){
-        System.out.println(">> Delete audio");
-        aName = JOptionPane.showInputDialog(null, "Nome do arquivo a ser deletado: ");
+
+    public void DELETE() {
+        aName = JOptionPane.showInputDialog(null, bundle.getString(("telaPrincipal.deleting")));
         cBD.setAudioname(aName);
         cBD.deleteAudio(conn);
-        JOptionPane.showMessageDialog(null, "Arquivo deletado com sucesso!");
-        
+        JOptionPane.showMessageDialog(null, bundle.getString("telaPrincipal.SucessDelete"));
+
     }
-    
+
 }

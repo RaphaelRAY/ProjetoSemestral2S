@@ -20,7 +20,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
 
     public TelaPrincipal(ResourceBundle bundle){
-        super("Tela Principal");
+        super(bundle.getString("telaPrincipal"));
         this.bundle = bundle;
         initComponents();
     }
@@ -32,9 +32,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
         this.setResizable(false);
         this.setLayout(new BorderLayout());
         
-        TxtButton = new JButton("Text");
-        AudioButton = new JButton("Audio");
-        ImageButton = new JButton("Image");
+        TxtButton = new JButton(bundle.getString("telaPrincipal.Text"));
+        AudioButton = new JButton(bundle.getString("telaPrincipal.Audio"));
+        ImageButton = new JButton(bundle.getString("telaPrincipal.Image"));
 
         //painel de botões
         JPanel panelbotao = new JPanel(new GridLayout(3,1));
@@ -63,7 +63,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
             }
         });
 
-        LogOutButton = new JButton("LogOut");
+        LogOutButton = new JButton(bundle.getString("telaPrincipal.Logout"));
 
         JPanel panelLogOut = new JPanel(new FlowLayout());
         panelLogOut.add(LogOutButton);

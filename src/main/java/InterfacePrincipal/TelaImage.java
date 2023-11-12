@@ -39,10 +39,10 @@ class TelaImage extends javax.swing.JFrame{
         this.setResizable(false);
         this.setLayout(new BorderLayout());
         
-        UploadButton = new JButton("Upload");
-        DowloadButton = new JButton("Dowload");
-        ViewButton = new JButton("View");
-        DeleteButton = new JButton("Delete");
+        UploadButton =  new JButton(bundle.getString("telaPrincipal.upload"));
+        DowloadButton = new JButton(bundle.getString("telaPrincipal.download"));
+        ViewButton =    new JButton(bundle.getString("telaPrincipal.view"));
+        DeleteButton =  new JButton(bundle.getString("telaPrincipal.delete"));
 
 
         //painel de botões
@@ -56,18 +56,18 @@ class TelaImage extends javax.swing.JFrame{
 
         UploadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                String iAutor = JOptionPane.showInputDialog(null, "Autor: "); //// O AUTOR SERA AQUELE QUE TIVER FEITO LOGIN
+                String iAutor = JOptionPane.showInputDialog(null, bundle.getString("telaPrincipal.Autor")); //// O AUTOR SERA AQUELE QUE TIVER FEITO LOGIN
                 cBD.setAutor(iAutor);
-                String iName = JOptionPane.showInputDialog(null, "Salvar como: ");
+                String iName = JOptionPane.showInputDialog(null, bundle.getString("telaPrincipal.name"));
                 cBD.setImagename(iName);
                 cBD.uploadImg(conn, iName);
-                JOptionPane.showMessageDialog(null, "Imagem inserida com sucesso!");
+                JOptionPane.showMessageDialog(null, bundle.getString("telaPrincipal.Sucesssave"));
             }
         });
 
         DowloadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                String iName = JOptionPane.showInputDialog(null, "Nome: ");
+                String iName = JOptionPane.showInputDialog(null, bundle.getString("telaPrincipal.name"));
                 cBD.setImagename(iName);
                 cBD.loadImg(conn, iName);
             }
@@ -81,14 +81,14 @@ class TelaImage extends javax.swing.JFrame{
 
         DeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                String iName = JOptionPane.showInputDialog(null, "Nome: ");
+                String iName = JOptionPane.showInputDialog(null, bundle.getString("telaPrincipal.name"));
                 cBD.setImagename(iName);
                 cBD.deleteImg(conn);
-                JOptionPane.showMessageDialog(null, "Imagem excluida com sucesso!");
+                JOptionPane.showMessageDialog(null, bundle.getString("telaPrincipal.SucessDelete"));
             }
         });
 
-        BackButton = new JButton("Back");
+        BackButton = new JButton(bundle.getString("telaPrincipal.back"));
 
         JPanel panelLogOut = new JPanel(new FlowLayout());
         panelLogOut.add(BackButton);

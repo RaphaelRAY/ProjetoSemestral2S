@@ -36,10 +36,10 @@ class TelaTxt extends javax.swing.JFrame{
         this.setResizable(false);
         this.setLayout(new BorderLayout());
         
-        UploadButton = new JButton("Upload");
-        DowloadButton = new JButton("Dowload");
-        ViewButton = new JButton("View");
-        DeleteButton = new JButton("Delete");
+        UploadButton = new JButton(bundle.getString("telaPrincipal.upload"));     
+        DowloadButton =  new JButton(bundle.getString("telaPrincipal.download"));    
+        ViewButton =   new JButton(bundle.getString("telaPrincipal.view"));
+        DeleteButton =  new JButton(bundle.getString("telaPrincipal.delete"));
 
 
         //painel de botões
@@ -73,7 +73,7 @@ class TelaTxt extends javax.swing.JFrame{
             }
         });
 
-        BackButton = new JButton("Back");
+        BackButton = new JButton(bundle.getString("telaPrincipal.back"));
 
         JPanel panelLogOut = new JPanel(new FlowLayout());
         panelLogOut.add(BackButton);
@@ -96,20 +96,20 @@ class TelaTxt extends javax.swing.JFrame{
     String tName;
     
     public void UPLOADTXT(){
-        tName = JOptionPane.showInputDialog(null, "Salvar como: ");
+        tName = JOptionPane.showInputDialog(null, bundle.getString("telaPrincipal.name"));
         cBD.setTextname(tName);
         cBD.uploadTxt(conn);
     }
     
     public void DELETETXT(){
-        tName = JOptionPane.showInputDialog(null, "Nome: ");
+        tName = JOptionPane.showInputDialog(null, bundle.getString("telaPrincipal.name"));
         cBD.setTextname(tName);
         cBD.deleteTxt(conn);
-        JOptionPane.showMessageDialog(null, "Deletado com sucesso!");
+        JOptionPane.showMessageDialog(null, "telaPrincipal.SucessDelete");
     }
     
     public void LOADTXT(){
-        tName = JOptionPane.showInputDialog(null, "Nome: ");
+        tName = JOptionPane.showInputDialog(null, bundle.getString(("telaPrincipal.name")));
         cBD.setTextname(tName);
         cBD.loadTxt(conn);
     }
